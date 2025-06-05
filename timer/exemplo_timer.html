@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./timer.js"></script>
+</head>
+
+<body>
+    <div id="timer">00:00:00</div>
+    <input id="ipt_dificuldade" type="text">
+    <button onclick="iniciar()">agora</button>
+</body>
+<script>
+    function iniciar() {
+        //let dificuldade = select_dificuldade.value;
+        let dificuldade = 'dificil'
+        timer(dificuldade);
+    }
+</script>
+
+</html>
