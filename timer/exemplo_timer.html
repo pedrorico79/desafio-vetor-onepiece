@@ -5,19 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../estilos.css">
     <script src="./timer.js"></script>
 </head>
 
 <body>
-    <div id="timer">00:00:00</div>
-    <input id="ipt_dificuldade" type="text">
-    <button onclick="iniciar()">agora</button>
+    <div class="temporizador" id="temporizador">
+        <div id="timer">05:00</div>
+    </div>
+    <label for="dificuldade">Escolha o nível de dificuldade</label>
+    <button onclick="iniciar()">Iniciar</button>
 </body>
+
 <script>
     function iniciar() {
-        //let dificuldade = select_dificuldade.value;
-        let dificuldade = 'dificil'
+        let dificuldade = 10;
         timer(dificuldade);
+        document.getElementById('temporizador').style.border = "0.5rem #860000 solid";
     }
 </script>
 
