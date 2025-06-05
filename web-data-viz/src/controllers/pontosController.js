@@ -1,4 +1,4 @@
-var pontosModel = require("../../../src_dataviz/src/models/pontosModel");
+var pontosModel = require("../models/pontosModel");
 
 function cadastrar(req, res) {
     var nome = req.body.nomeServer;
