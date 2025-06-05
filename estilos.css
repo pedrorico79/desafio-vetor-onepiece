@@ -129,3 +129,12 @@ button:hover, select:hover {
 .resultado th, .resultado td {
     padding: 1rem;
 }
+
+.ipt_nome{
+    border: none;
+    padding: 0.5rem;
+    background-color: var(--corFundoTerc);
+    color: var(--corTextoPrim);
+    border-radius: 10px;
+    font-size: 20px;
+}

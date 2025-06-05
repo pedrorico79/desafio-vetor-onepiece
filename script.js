@@ -1,5 +1,5 @@
-const armadilhas = [];
-const premios = [];
+let armadilhas = [];
+let premios = [];
 
 let rodada = 1;
 let dificuldade;
@@ -9,6 +9,8 @@ let pontuacaoTotal = 0;
 function iniciarJogo() {
     let secInicio = document.querySelector('.inicio');
     secInicio.style.display = 'none';
+    let nome = ipt_nome.value;
+    salvarNome(nome);
 
     dificuldade = document.querySelector('#dificuldade').value;
 
@@ -26,12 +28,13 @@ function plotarElementos() {
     let frase = '';
     let inicio = 1;
     acertos = 0;
+    let tamanho = dificuldade * dificuldade;
 
-    while (armadilhas.length < dificuldade || premios.length < dificuldade) {
-        let errado = Number((Math.random() * (100 - 1) + 1).toFixed());
-        let certo = Number((Math.random() * (100 - 1) + 1).toFixed());
+    while (armadilhas.length < dificuldade - 2 || premios.length < dificuldade) {
+        let errado = Number((Math.random() * (tamanho- 1) + 1).toFixed());
+        let certo = Number((Math.random() * (tamanho - 1) + 1).toFixed());
 
-        if (!armadilhas.includes(errado) && !premios.includes(errado) && armadilhas.length < dificuldade) {
+        if (!armadilhas.includes(errado) && !premios.includes(errado) && armadilhas.length < dificuldade - 2) {
             armadilhas.push(errado);
         }
 
@@ -40,9 +43,9 @@ function plotarElementos() {
         }
     }
 
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < dificuldade; i++) {
         frase += `<tr>`;
-        for (let j = 0; j < 10; j++) {
+        for (let j = 0; j < dificuldade; j++) {
             frase += `<td onclick="exibir(${inicio})" id="td${inicio}"></td>`;
 
             inicio++;
@@ -74,6 +77,9 @@ function exibir(indice) {
     }
 
     if (errou) {
+        armadilhas = [];
+        premios = [];
+
         if (rodada < 3) {
             exibirPopUp(`Você errou! Começando rodada ${rodada + 1}`);
             rodada++;
@@ -88,6 +94,8 @@ function exibir(indice) {
         if (rodada < 3) {
             exibirPopUp(`Você acertou todos! Começando rodada ${rodada + 1}`);
             rodada++;
+            armadilhas = [];
+            premios = [];
             plotarElementos();
         } else {
             exibirPopUp('Você acertou e a rodada 3 finalizou! Exibindo resultados');
@@ -130,7 +138,7 @@ function exibirResultados() {
     fraseTempo = `${minutos}:${segundos}`;
 
     tabela.innerHTML += `<tr>
-                    <td> Usuário </td>
+                    <td> ${sessionStorage.NOME_USUARIO} </td>
                     <td> ${pontuacaoTotal} </td>
                     <td> ${fraseTempo} </td>
                 </tr>`;
@@ -155,4 +163,8 @@ function timer(dificuldade) {
             timerElement.innerText = "Tempo esgotado!";
         }
     }, 1000);
+}
+
+function salvarNome(nome){
+    sessionStorage.NOME_USUARIO = nome;
 }
