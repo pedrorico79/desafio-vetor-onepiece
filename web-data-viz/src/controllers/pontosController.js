@@ -1,4 +1,4 @@
-var pontosModel = require("../models/pontosModel");
+var pontosModel = require("../../../src_dataviz/src/models/pontosModel");
 
 function cadastrar(req, res) {
     var nome = req.body.nomeServer;
@@ -9,7 +9,7 @@ function cadastrar(req, res) {
     } else if (pontuacao == undefined) {
         res.status(400).send("Sua pontuacao está undefined!");
     } else {
-        pontosModel.cadastrar(nome,pontuacao)
+        pontosModel.cadastrar(nome, pontuacao)
             .then(
                 function (resultado) {
                     res.json(resultado);
@@ -27,8 +27,8 @@ function cadastrar(req, res) {
     }
 }
 
-function listar(req,res){
-    pontosModel.listar().then(function (resultado){
+function listar(req, res) {
+    pontosModel.listar().then(function (resultado) {
         res.status(200).send(resultado);
     }).catch(function (erro) {
         res.status(500).json(erro.sqlMessage);
