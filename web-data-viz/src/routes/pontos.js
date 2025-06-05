@@ -7,7 +7,7 @@ router.post("/cadastrar", function (req, res) {
     pontosController.cadastrar(req, res);
 })
 
-router.get("listar", function (req, res) {
+router.get("/listar", function (req, res) {
     pontosController.listar(req, res);
 });
 

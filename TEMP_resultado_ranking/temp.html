@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <section id="section_rank"></section>
+
+</body>
+
+<script>
+
+    function cadastrar() {
+        var nomeVar = ipt_nome.value;
+        var pontuacaoVar = ipt_pontuacao.value;
+
+        if (nomeVar == "" || pontuacaoVar == "") {
+            alert('erro, campos em branco')
+        }
+
+        fetch("/pontos/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                nomeServer: nomeVar,
+                pontuacaoServer: pontuacaoVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log('resposta: ', resposta);
+                if (resposta.ok) {
+                    mensagem_erro.innerHTML =
+                        "Cadastro realizado com sucesso!";
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+                finalizarAguardar();
+            });
+    }
+
+    function listar() {
+
+    }
+
+</script>
+
+</html>
