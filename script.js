@@ -13,7 +13,10 @@ function iniciarJogo() {
     dificuldade = document.querySelector('#dificuldade').value;
 
     timer(dificuldade);
-    document.getElementById('temporizador').style.border = "0.5rem #860000 solid";
+    let temporizador = document.getElementById('temporizador');
+
+    temporizador.style.border = "0.5rem #860000 solid";
+    temporizador.style.display = 'flex';
 
     plotarElementos();
 }
@@ -114,22 +117,32 @@ function exibirResultados() {
     let secJogo = document.querySelector('.jogo');
     secJogo.style.display = 'none';
 
+    let temporizador = document.getElementById('temporizador');
+    temporizador.style.display = 'none';
+
     let tabela = document.querySelectorAll('table')[1];
+
+    let tempo = 300 - timeLeft;
+
+    let minutos = Math.floor(tempo / 60);
+    let segundos = tempo % 60;
+
+    fraseTempo = `${minutos}:${segundos}`;
 
     tabela.innerHTML += `<tr>
                     <td> Usuário </td>
                     <td> ${pontuacaoTotal} </td>
+                    <td> ${fraseTempo} </td>
                 </tr>`;
 
     secFinalizar = document.querySelector('.finalizar');
     secFinalizar.style.display = 'flex';
 }
 
-function timer(dificuldade) {
-    var timeLeft = 300; // Segundos
-    const timerElement = document.getElementById("timer");
+var timeLeft = 300;
 
-    console.log(timeLeft);
+function timer(dificuldade) {
+    const timerElement = document.getElementById("timer");
 
     const timerInterval = setInterval(() => {
         if (timeLeft > 0) {
