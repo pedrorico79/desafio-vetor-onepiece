@@ -1,15 +1,6 @@
 function timer(dificuldade) {
-    var timeLeft = 0; // Segundos
-    //var dificuldade = ipt_dificuldade.value;
+    var timeLeft = 300; // Segundos
     const timerElement = document.getElementById("timer");
-
-    if (dificuldade == 'facil') {
-        timeLeft = 300;
-    } else if (dificuldade == 'medio') {
-        timeLeft = 180;
-    } else if (dificuldade == 'dificil') {
-        timeLeft = 60;
-    }
 
     console.log(timeLeft);
 

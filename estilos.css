@@ -80,3 +80,16 @@ button:hover, select:hover {
     flex-direction: column;
     gap: 1rem;
 }
+
+.temporizador{
+    margin: 2%;
+    width: 5%;
+    height: 100px;
+    background-color: #000;
+    border: 0.5rem #00863c solid;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border 300s ease-in-out;
+}
