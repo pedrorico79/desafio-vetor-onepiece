@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Desafio Matriz </title>
+    <title> Jogo - Chapéus de Palha </title>
     <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
     <header>
         <section class="container">
-            <h1 class="titulo"> Desafio One Piece </h1>
+            <h1 class="titulo"> Jogo dos Chapéus de Palha </h1>
         </section>
     </header>
 
@@ -18,6 +18,12 @@
             <section class="inicio">
                 <h1 class="titulo"> Bem vindo ao jogo dos Chapéus de palha </h1>
                 <p> Atenção as regras do jogo </p>
+                <select name="dificuldade" id="dificuldade">
+                    <option value="3"> Fácil </option>
+                    <option value="5"> Médio </option>
+                    <option value="10"> Dificil </option>
+                </select>
+
                 <button onclick="iniciarJogo()"> Iniciar Jogo </button>
             </section>
 
