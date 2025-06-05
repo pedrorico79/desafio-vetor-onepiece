@@ -46,7 +46,7 @@ main {
     font-size: 2rem;
 }
 
-td {
+td, th {
     width: 2.5rem;
     height: 2.5rem;
     text-align: center;
@@ -57,6 +57,10 @@ td {
 
 td:hover {
     background-color: #111111;
+}
+
+th {
+    background-color: #fab110;
 }
 
 button, select {
@@ -92,4 +96,36 @@ button:hover, select:hover {
     justify-content: center;
     align-items: center;
     transition: border 300s ease-in-out;
+}
+
+.popup {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(17, 17, 17, 0.499);
+}
+
+.mensagem {
+    width: 30%;
+    height: 30%;
+    padding: 1rem;
+    background-color: var(--corTextoPrim);
+    color: #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.finalizar {
+    display: none;
+}
+
+.resultado th, .resultado td {
+    padding: 1rem;
 }
