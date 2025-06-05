@@ -12,6 +12,9 @@ function iniciarJogo() {
 
     dificuldade = document.querySelector('#dificuldade').value;
 
+    timer(dificuldade);
+    document.getElementById('temporizador').style.border = "0.5rem #860000 solid";
+
     plotarElementos();
 }
 
@@ -23,7 +26,7 @@ function plotarElementos() {
 
     while (armadilhas.length < dificuldade || premios.length < dificuldade) {
         let errado = Number((Math.random() * (100 - 1) + 1).toFixed());
-        let certo  = Number((Math.random() * (100 - 1) + 1).toFixed());
+        let certo = Number((Math.random() * (100 - 1) + 1).toFixed());
 
         if (!armadilhas.includes(errado) && !premios.includes(errado) && armadilhas.length < dificuldade) {
             armadilhas.push(errado);
@@ -33,7 +36,7 @@ function plotarElementos() {
             premios.push(certo);
         }
     }
-    
+
     for (let i = 0; i < 10; i++) {
         frase += `<tr>`;
         for (let j = 0; j < 10; j++) {
@@ -56,7 +59,7 @@ function exibir(indice) {
     if (armadilhas.includes(indice)) {
         td.style.backgroundColor = `#bb0000`;
         td.innerHTML = `❌`;
-        errou = true; 
+        errou = true;
     } else if (premios.includes(indice)) {
         td.style.backgroundColor = `#00bb00`;
         td.innerHTML = `⭐`;
@@ -120,4 +123,23 @@ function exibirResultados() {
 
     secFinalizar = document.querySelector('.finalizar');
     secFinalizar.style.display = 'flex';
+}
+
+function timer(dificuldade) {
+    var timeLeft = 300; // Segundos
+    const timerElement = document.getElementById("timer");
+
+    console.log(timeLeft);
+
+    const timerInterval = setInterval(() => {
+        if (timeLeft > 0) {
+            timeLeft--;
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        } else {
+            clearInterval(timerInterval);
+            timerElement.innerText = "Tempo esgotado!";
+        }
+    }, 1000);
 }
