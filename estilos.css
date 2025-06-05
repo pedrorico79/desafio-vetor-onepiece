@@ -8,9 +8,10 @@
 :root {
     --tmnHeaFoo: 6rem;
     --tmnMain: calc(100vh - var(--tmnHeaFoo) * 2);
-    --corFundoPrimaria: #323232;
-    --corTextoPrimaria: #ffffff;
-    --corFundoSecundaria: #860000;
+    --corFundoPrim: #323232;
+    --corFundoSecu: #860000;
+    --corFundoTerc: #222222;
+    --corTextoPrim: #ffffff;
     --corBotao: #fab110;
 }
 
@@ -21,13 +22,14 @@ body {
 header, footer {
     height: var(--tmnHeaFoo);
     display: flex;
-    background-color: var(--corFundoSecundaria);
+    background-color: var(--corFundoSecu);
 }
 
 main {
     min-height: var(--tmnMain);
     display: flex;
-    background-color: var(--corFundoPrimaria);
+    background-color: var(--corFundoPrim);
+    padding: 2rem 0;
 }
 
 .container {
@@ -36,9 +38,45 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 2rem;
 }
 
 .titulo {
     font-size: 2rem;
 }
 
+td {
+    width: 2rem;
+    height: 2rem;
+    text-align: center;
+    background-color: var(--corFundoTerc);
+    transition: all ease-in-out 0.2s;
+    cursor: pointer;
+}
+
+td:hover {
+    background-color: #111111;
+}
+
+button {
+    background: none;
+    padding: 1rem 2rem;
+    border: 0.1rem solid var(--corBotao);
+    border-radius: 0.2rem;
+    transition: all ease-in-out 0.2s;
+    color: var(--corTextoPrim);
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--corBotao);
+}
+
+.inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
